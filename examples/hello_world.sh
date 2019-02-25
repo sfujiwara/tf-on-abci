@@ -12,4 +12,4 @@ source /etc/profile.d/modules.sh
 module load cuda/9.2/9.2.88.1
 
 # Run
-./a.out
+echo "hell world!"

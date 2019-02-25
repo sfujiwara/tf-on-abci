@@ -26,3 +26,15 @@ python3 -m venv tf
 # Activate virtual environment
 source tf/bin/activate
 ```
+
+## Run Examples
+
+```bash
+cd examples
+```
+
+### Hello World
+
+```bash
+qsub -g gaa50123 hello_world.sh
+```

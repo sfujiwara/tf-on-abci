@@ -9,7 +9,7 @@
 source /etc/profile.d/modules.sh
 
 # Load modules
-module load cuda/9.2/9.2.88.1
+module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
 
 # Run
 echo "hell world!"

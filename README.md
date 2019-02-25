@@ -10,9 +10,8 @@ ssh -p 10022 -l aca10541ea localhost
 ## Load Modules
 
 ```bash
-module load python/3.6/3.6.5
-module load cuda/9.2/9.2.88.1
-module load cudnn/7.4/7.4.2
+module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1
+export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 ```
 
 Note that in python/3.6/3.6.5 module, `python` command call Python 2.

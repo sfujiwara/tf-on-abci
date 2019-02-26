@@ -3,3 +3,9 @@
 
 # Logs on ABCI
 *.sh.o*
+
+# Horovod examples
+keras_mnist.py
+
+# Keras outputs
+*.h5

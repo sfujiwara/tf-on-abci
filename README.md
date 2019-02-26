@@ -73,6 +73,8 @@ python -c "from tensorflow.python.client import device_lib; print(device_lib.lis
 
 After finishing your setup, you can run the examples.
 
+Note that you should logout from computing node and run them on interactive node.
+
 ### Clone Example Repository
 
 ```bash

@@ -21,5 +21,4 @@ source ~/tf/bin/activate
 python3 --version
 
 # MPI
-# mpirun -n 2 -np 1 python3 hello_world.py
-mpirun python3 hello_world.py
+mpirun -N 1 python3 hello_world.py

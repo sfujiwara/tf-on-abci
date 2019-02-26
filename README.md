@@ -61,6 +61,7 @@ source tf/bin/activate
 # You can install other modules if needed
 pip3 install tensorflow-gpu
 pip3 install horovod
+pip3 install Keras Keras-Applications Keras-Preprocessing
 ```
 
 If you successfully installed tensorflow-gpu, you can see available devices with the command below:
@@ -89,6 +90,12 @@ qsub -g gaa50123 hello_world.sh
 ```
 
 ### Keras + Horovod
+
+Download example from Horovod repository:
+
+```
+wget https://raw.githubusercontent.com/horovod/horovod/master/examples/keras_mnist.py
+```
 
 ```bash
 qsub -g gaa50123 keras_mnist.sh

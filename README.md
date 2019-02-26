@@ -87,3 +87,9 @@ cd tf-on-abci/examples
 ```bash
 qsub -g gaa50123 hello_world.sh
 ```
+
+### Keras + Horovod
+
+```bash
+qsub -g gaa50123 keras_mnist.sh
+```

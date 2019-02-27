@@ -59,7 +59,7 @@ source tf/bin/activate
 
 ```bash
 # You can install other modules if needed
-pip3 install tensorflow-gpu
+pip3 install tensorflow-gpu==1.12.0
 pip3 install horovod
 pip3 install Keras Keras-Applications Keras-Preprocessing
 ```

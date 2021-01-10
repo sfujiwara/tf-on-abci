@@ -8,7 +8,7 @@
 source /etc/profile.d/modules.sh
 
 # Load modules
-module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1 openmpi/2.1.5
+module load gcc/7.4.0 python/3.8/3.8.2 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 openmpi/2.1.6
 
 # Run
 echo "hell world!"

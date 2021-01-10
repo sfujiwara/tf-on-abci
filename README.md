@@ -2,49 +2,41 @@
 
 ## Login to Interactive Node from Your Local Machine
 
-Start two terminal on your local machine and run the commands below:
+ターミナルを 2 つ立ち上げて、それぞれ次のコマンドを実行します:
 
 ```bash
 # SSH tunnel
-ssh -L 10022:es:22 -l aca10541ea as.abci.ai
+ssh -L 10022:es:22 -l ${ABCI_ACCOUNT} as.abci.ai
 ```
 
 ```bash
 # Login to interactive node via SSH tunnel
-ssh -p 10022 -l aca10541ea localhost
+ssh -p 10022 -l ${ABCI_ACCOUNT} localhost
 ```
 
-Note that `aca10451ea` is user name of @sfujiwara.
-You have to replace it with your user name.
+`${ABCI_ACCOUNT}` は自身の ABCI アカウントに置き換えてください。
 
 ## Setup on ABCI
 
-We recommend to do your setup on computing node because interactive node does not have GPUs.
-
-For example, you can install tensorflow-gpu on interactive node, but can not install Horovod because tensorflow-gpu can not run without GPUs.
+開発環境の構築はインタラクティブノードではなく GPU がある計算ノードで行うことをおすすめします。
 
 ### Login to Computing Node from Interactive Node
 
-Login to computing node with the command below:
+次のコマンドで計算ノードへログインします:
 
 ```bash
-qrsh -l rt_F=1 -g gaa50123
+qrsh -l rt_F=1 -g ${GROUP}
 ```
 
-Note that `gaa50123` is group of @sfujiwara.
-You have to replace it with your group.
+`${GROUP}` は自身の ABCI グループに置き換えてください。
 
 ### Setup on Computing Node
 
 #### Load Modules
 
 ```bash
-module load python/3.6/3.6.5 cuda/9.0/9.0.176.4 cudnn/7.2/7.2.1 openmpi/2.1.5
-# export LD_LIBRARY_PATH=$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+module load gcc/7.4.0 python/3.8/3.8.2 cuda/10.1/10.1.243 cudnn/7.6/7.6.5 openmpi/2.1.6
 ```
-
-Note that in python/3.6/3.6.5 module, `python` command call Python 2.
-We have to use `python3` command to use Python 3.
 
 #### Create Virtual Environment
 
@@ -59,12 +51,12 @@ source tf/bin/activate
 
 ```bash
 # You can install other modules if needed
-pip3 install tensorflow-gpu==1.12.0
-pip3 install horovod
-pip3 install Keras Keras-Applications Keras-Preprocessing
+pip install -U pip
+pip install tensorflow
+pip install horovod
 ```
 
-If you successfully installed tensorflow-gpu, you can see available devices with the command below:
+セットアップが完了したら、次のコマンドで TensorFlow が正しく GPU を認識しているか確認できます:
 
 ```bash
 python -c "from tensorflow.python.client import device_lib; print(device_lib.list_local_devices())"
@@ -72,31 +64,18 @@ python -c "from tensorflow.python.client import device_lib; print(device_lib.lis
 
 ## Run Examples
 
-After finishing your setup, you can run the examples.
+セットアップが完了したらサンプルのジョブを投げてみましょう。
+ジョブは計算ノードからログアウトしてインタラクティブノードから投げます。
 
-Note that you should logout from computing node and run them on interactive node.
-
-### Clone Example Repository
+次のコマンドでこのリポジトリをクローンします:
 
 ```bash
 git clone https://github.com/sfujiwara/tf-on-abci.git
-cd tf-on-abci/examples
 ```
 
-### Hello World
+### Examples
 
-```bash
-qsub -g gaa50123 hello_world.sh
-```
+サンプルの実行方法は各ディレクトリの `README.md` を参照してください:
 
-### Keras + Horovod
-
-Download example from Horovod repository:
-
-```
-wget https://raw.githubusercontent.com/horovod/horovod/master/examples/keras_mnist.py
-```
-
-```bash
-qsub -g gaa50123 keras_mnist.sh
-```
+- [hello-world](hello-world)
+- [mnist](mnist)

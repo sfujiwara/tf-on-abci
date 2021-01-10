@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #$ -l rt_F=2
-#$ -j y
+#$ -o log/
+#$ -e log/
 #$ -cwd
 
 # Initialize environment modules
@@ -18,7 +19,7 @@ hostname
 
 # Python
 source ~/tf/bin/activate
-python3 --version
+python --version
 
 # MPI
-mpirun -N 1 python3 hello_world.py
+mpirun -N 1 python hello_world.py
